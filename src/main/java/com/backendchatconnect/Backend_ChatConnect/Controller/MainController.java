@@ -1,18 +1,17 @@
 package com.backendchatconnect.Backend_ChatConnect.Controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.backendchatconnect.Backend_ChatConnect.Util.ID;
 
 @RestController
 public class MainController {
 
-    String makeID(String name) {
-        return String.valueOf(Math.abs(name.hashCode()));
-    }
+    ID id = new ID();
 
-    @GetMapping("/getId/{name}")
-    public String getID(@PathVariable String name){
-        return makeID(name);
+    @GetMapping("/getId")
+    public String getID(){
+        return id.generateID();
     }
 }
